@@ -1,9 +1,41 @@
 html {
-    width: 800px;
+    width: 375px;
     height: 600px;
 }
 
 body {
-    width: 800px;
-    height: 600px;
+    margin: 0px;
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+  
+.content {
+    flex: 1 0 auto;
+}
+
+.navbar {
+    background-color: #333333;
+    overflow: hidden;
+    width: 100%;
+    display: flex;
+    flex-shrink: 0;
+}
+
+.navbar a {
+    color: white;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 12px;
+    flex-grow: 1;
+}
+
+.navbar a:hover {
+    background-color: #ddd;
+    color: black;
+}
+
+.navbar a.active {
+    background-color: #4CAF50;
+    color: white;
 }
