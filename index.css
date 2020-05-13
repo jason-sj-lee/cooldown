@@ -1,41 +1,51 @@
 html {
-    width: 375px;
-    height: 600px;
+    width: 325px;
+    height: 500px;
 }
 
 body {
-    margin: 0px;
-    display: flex;
-    flex-direction: column;
-    height: 100%;
+    margin: 0;
+    font-family: 'Roboto', 'sans-serif';
+    font-size: 16px;
+    color: #5B7897;
+    letter-spacing: 2px;
+    background-color: #eff2f5;
+    text-align: center;
 }
-  
+
+header {
+    letter-spacing: normal;
+}
+
 .content {
-    flex: 1 0 auto;
+    color: #849DBC;
+    font-size: 20px;
 }
 
 .navbar {
-    background-color: #333333;
-    overflow: hidden;
+    background-color: white;
     width: 100%;
     display: flex;
-    flex-shrink: 0;
+    position: fixed;
+    bottom: 0;
 }
 
 .navbar a {
-    color: white;
     padding: 14px 16px;
+    color: #849DBC;
+    letter-spacing: 2px;
     text-decoration: none;
+    text-align: center;
     font-size: 12px;
-    flex-grow: 1;
+    flex: 1;
 }
 
 .navbar a:hover {
-    background-color: #ddd;
-    color: black;
+    background-color: #2399ff;
+    color:#eff2f5;
 }
 
 .navbar a.active {
-    background-color: #4CAF50;
-    color: white;
+    background-color: #2399ff;
+    color: #eff2f5;
 }
