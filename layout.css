@@ -1,0 +1,51 @@
+html {
+    width: 325px;
+    height: 500px;
+}
+
+body {
+    margin: 0;
+    font-family: 'Roboto', 'sans-serif';
+    font-size: 16px;
+    color: #5B7897;
+    letter-spacing: 2px;
+    background-color: #eff2f5;
+    text-align: center;
+}
+
+header {
+    letter-spacing: normal;
+}
+
+.content {
+    color: #849DBC;
+    font-size: 20px;
+}
+
+.navbar {
+    background-color: white;
+    width: 100%;
+    display: flex;
+    position: fixed;
+    bottom: 0;
+}
+
+.navbar a {
+    padding: 14px 16px;
+    color: #849DBC;
+    letter-spacing: 2px;
+    text-decoration: none;
+    text-align: center;
+    font-size: 12px;
+    flex: 1;
+}
+
+.navbar a:hover {
+    background-color: #2399ff;
+    color:#eff2f5;
+}
+
+.navbar a.active {
+    background-color: #2399ff;
+    color: #eff2f5;
+}
