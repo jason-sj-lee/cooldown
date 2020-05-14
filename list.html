@@ -1,14 +1,37 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<link rel="stylesheet" type="text/css" href="layout.css">
-<link rel="stylesheet" type="text/css" href="list.css">
-<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="layout.css">
+    <link rel="stylesheet" type="text/css" href="list.css">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 </head>
 
 <body>
-    <h1>this is the list page</h1>
-    <div class="content">some content</div>
+    <h1>Blocked URLs</h1>
+    <div class="content">
+        <div id="add">
+            <input id="urlTextInput" type="text">
+            <button id="blockButton">Block</button>
+        </div>
+        <ul>
+            <li>
+                <button class="deleteButton"><i class="fa fa-trash"></i></button>
+                https://www.facebook.com
+            </li>
+            <li>
+                <button class="deleteButton"><i class="fa fa-trash"></i></button>
+                https://www.instagram.com
+            </li>
+            <li>
+                <button class="deleteButton"><i class="fa fa-trash"></i></button>
+                https://www.youtube.com
+            </li><li>
+                <button class="deleteButton"><i class="fa fa-trash"></i></button>
+                https://www.netflix.com
+            </li>
+        </ul>
+    </div>
     
     <div class="navbar">
         <a href="index.html" >main</a>
