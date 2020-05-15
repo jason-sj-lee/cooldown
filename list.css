@@ -1,24 +1,54 @@
-#add input{
-    width: 60%;
+h1 {
+    letter-spacing: normal;
 }
 
-.content li{
+#add input {
+    width: 70%;
+    border: none;
+    border-radius: 25px;
+    height: 35px;
+    outline: none;
+    text-indent: 20px;
+    font-size: 12px;
+}
+
+#add button {
+    position: absolute;
+    margin-top: 4px;
+    margin-left: -30px;
+    box-shadow: none;
+    height: 25px;
+    width: 25px;
+    border-radius: 50%;
+    border: none;
+    font-size: 14px;
+    text-align: center;
+    color: white;
+    background-color: #ff4747;
+    cursor: pointer;
+    outline: none;
+}
+
+#add button:hover {
+    opacity: 0.7;
+}
+
+.content ul {
+    width: 85%;
+}
+
+.content li {
     font-size: 12px;
     letter-spacing: normal;
-    float: left;
     list-style: none;
 }
 
-.deleteButton {
-    background-color: #FF4136; 
-    border: none;
-    color: white;
-    padding: 6px 8px;
-    font-size: 10px;
-    cursor: pointer;
-    margin: 10px;
+.text {
+    float: left;
+    margin-bottom: 10px;
 }
 
-.deleteButton:hover {
-    background-color: rgb(253, 89, 81)
+.deleteButton {
+    float: right;
 }
+
