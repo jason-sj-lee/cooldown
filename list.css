@@ -1,54 +1,70 @@
-h1 {
-    letter-spacing: normal;
+.addBar {
+    position: relative;
 }
 
-#add input {
-    width: 70%;
-    border: none;
-    border-radius: 25px;
-    height: 35px;
-    outline: none;
-    text-indent: 20px;
-    font-size: 12px;
-}
-
-#add button {
-    position: absolute;
-    margin-top: 4px;
-    margin-left: -30px;
-    box-shadow: none;
-    height: 25px;
-    width: 25px;
-    border-radius: 50%;
+#urlTextInput {
+    padding: 10px;
     border: none;
     font-size: 14px;
-    text-align: center;
-    color: white;
-    background-color: #ff4747;
-    cursor: pointer;
+    border-radius: 25px;
+    text-indent: 10px;
+    width: 75%;
+}
+
+#urlTextInput:focus {
     outline: none;
 }
-
-#add button:hover {
-    opacity: 0.7;
+::placeholder {
+    opacity: 0.50;
 }
 
-.content ul {
-    width: 85%;
+#blockButton {
+    background-color:#ff4747;
+    border: none;
+    color: white;
+    padding: 11px 13px;
+    border-radius: 25%;
+    cursor: pointer;
+    position: absolute;
+    margin-left: -35px;
 }
 
-.content li {
-    font-size: 12px;
-    letter-spacing: normal;
+ul {
+    width: 90%;
+    padding: 0;
+    margin-left: 15px;
+}
+
+li {
     list-style: none;
+    font-size: 14px;
+    padding-top:10px;
+    position: relative;
+    vertical-align: middle;
+    padding-bottom: 10px;
 }
 
-.text {
-    float: left;
-    margin-bottom: 10px;
-}
-
-.deleteButton {
+.url {
     float: right;
+    padding-top: 5px
 }
 
+.rmvButton {
+    float: left;
+    overflow: hidden;
+    outline:none;
+    border: none;
+    background-color: Transparent;
+    cursor: pointer;
+}
+
+#minusCircle {
+    color:#ff4747;
+    font-size: 25px;
+}
+
+hr {
+    border: 0;
+    border-bottom: 1px dashed rgb(204, 204, 204);
+    background: rgba(153, 153, 153, 0.719);
+}

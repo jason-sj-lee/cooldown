@@ -5,32 +5,25 @@
     <link rel="stylesheet" type="text/css" href="list.css">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
 </head>
 
 <body>
     <h1>Blocked URLs</h1>
     <div class="content">
-        <div id="add">
-            <input id="urlTextInput" type="url">
-            <button id="blockButton">&#65291;</button>
+        <div class="addBar">  
+            <input id="urlTextInput" type="url" placeholder="URL">
+            <button id="blockButton"><i class="fa fa-ban" aria-hidden="true"></i></button>
         </div>
         <ul>
             <li>
-                <a class="text">https://www.facebook.com</a>
-                <button class="deleteButton"></button>
+                <button class="rmvButton"><i class="fa fa-minus-circle" id="minusCircle"></i></button>
+                <a class="url">https://www.facebook.com</a>
+                <div style="clear: both;"></div>
             </li>
             <li>
-                <a class="text">https://www.youtube.com</a>
-                <button class="deleteButton"></button>
-            </li>
-            <li>
-                <a class="text">https://www.instagram.com</a>
-                <button class="deleteButton"></button>
-            </li>
-            <li>
-                <a class="text">https://www.netflix.com</a>
-                <button class="deleteButton"></button>
+                <button class="rmvButton"><i class="fa fa-minus-circle" id="minusCircle"></i></button>
+                <a class="url">https://www.instagram.com</a>
+                <div style="clear: both;"></div>
             </li>
         </ul>
     </div>
