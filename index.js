@@ -1,17 +1,25 @@
 // functionality for lists page
 var blockButton = document.getElementById("blockButton").addEventListener("click", function() {handlers.addUrl()});
 
+if (localStorage.getItem("urls") === "null") {
+    localStorage.setItem("urls", JSON.stringify([]));
+}
+
 var urlList = {
-    urls: [],
+    urls: JSON.parse(localStorage.getItem("urls")),
 
     addUrl: function(urlText) {
         this.urls.push(urlText);
+        localStorage.setItem("urls", JSON.stringify(this.urls));
     },
 
     deleteUrl: function(position) {
         this.urls.splice(position, 1);
+        localStorage.setItem("urls", JSON.stringify(this.urls));
     }
 };
+
+localStorage.setItem("urls", JSON.stringify(urlList.urls));
 
 var handlers = {
     addUrl: function() {
@@ -50,6 +58,30 @@ var view = {
             urlUl.appendChild(urlLi);
         }
     },
+    
+    displayLocalStorage: function() {
+        var urlUl = document.getElementById("urlList");
+        urlUl.innerHTML = "";
+        var urls = JSON.parse(localStorage.getItem("urls"));
+        
+        for (var i = 0; i < urls.length; i++) {
+            var urlLi = document.createElement("li");
+            var url = urls[i];
+
+            var urlSpan = document.createElement("span");
+            urlSpan.classList = "url";
+            urlSpan.textContent = url;
+
+            var spacing = document.createElement("div");
+            spacing.style = "clear: both";
+
+            urlLi.id = i;
+            urlLi.appendChild(this.createDeleteButton());
+            urlLi.appendChild(urlSpan);
+            urlLi.appendChild(spacing);
+            urlUl.appendChild(urlLi);
+        };
+    },
 
     createDeleteButton: function() {
         var rmvButton = document.createElement("button");
@@ -75,3 +107,8 @@ var view = {
     }
 };
 view.setUpEventListener();
+
+if (localStorage.getItem("urls") === "null") {
+    localStorage.setItem("urls", JSON.stringify([]));
+}
+view.displayLocalStorage();
