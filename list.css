@@ -14,7 +14,8 @@
 #urlTextInput:focus {
     outline: none;
 }
-::placeholder {
+
+#urlTextInput::placeholder {
     opacity: 0.50;
 }
 
@@ -27,6 +28,10 @@
     cursor: pointer;
     position: absolute;
     margin-left: -35px;
+}
+
+#blockButton:hover {
+    opacity: 0.50;
 }
 
 ul {
@@ -61,6 +66,10 @@ li {
 #minusCircle {
     color:#ff4747;
     font-size: 25px;
+}
+
+#minusCircle:hover {
+    opacity: 0.50;
 }
 
 hr {
