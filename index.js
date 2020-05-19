@@ -1,4 +1,3 @@
-var x = 1;
 // functionality for lists page
 var blockButton = document.getElementById("blockButton").addEventListener("click", function() {handlers.addUrl()});
 
