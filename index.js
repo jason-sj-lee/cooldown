@@ -30,7 +30,7 @@ var handlers = {
 var view = {
     displayUrls: function() {
         var urlUl = document.getElementById("urlList");
-         urlUl.innerHTML = "";
+        urlUl.innerHTML = "";
 
         for (var i = 0; i < urlList.urls.length; i++) {
             var urlLi = document.createElement("li");
@@ -68,9 +68,8 @@ var view = {
 
         urlUl.addEventListener("click", function(event) {
             var elementClicked = event.target;
-            debugger;
             if (elementClicked.className === "fa fa-minus-circle") {
-                handlers.deleteUrl(parseInt(elementClicked.parentNode.id));
+                handlers.deleteUrl(parseInt(elementClicked.parentNode.parentNode.id));
             }
         });
     }
