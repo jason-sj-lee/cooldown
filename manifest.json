@@ -7,9 +7,7 @@
     "permissions": [
         "storage",
         "webRequest", 
-        "webRequestBlocking",
-        "http://*/*",
-        "https://*/*"
+        "webRequestBlocking"
     ],
 
     "browser_action": {
