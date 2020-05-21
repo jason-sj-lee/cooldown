@@ -1,37 +1,22 @@
 /////////////////////////////////////
-// functionality for settings page //
+// functionality for index page //
+window.onload = toggle;
 
-// class
-class CountDown{
-    constructor(hour, minute, second) {
-        this.hr = new String(hour);
-        this.min = new String(minute);
-        this.sec = new String(second);
+function toggle() {
+    var btn = document.getElementById("mybtn");
+    if (btn.value === "on") {
+        btn.innerHTML = "stop";
+        btn.addEventListener("click", toggle);
+        btn.value = "off";
     }
-    store(){
-        localStorage.setItem('hour', this.hr);
-        localStorage.setItem('minute', this.min);
-        localStorage.setItem('second', this.sec);
-    }
-    display(){
-        return localStorage.getItem('hour') + ":" + localStorage.getItem('minute') + ":" + localStorage.getItem('second')
+    else {
+        btn.innerHTML = "start";
+        btn.addEventListener("click", toggle);
+        btn.value = "on";
     }
 }
-document.getElementById("countdown-number").innerHTML = localStorage.getItem('minute');
-// variable declaration
-var hour, minute, second;
-console.log(document.getElementById("hour"));
-// retrieving input time value 
-hour = document.getElementById("hour").value;
-minute = document.getElementById("minute").value;
-second = document.getElementById("second").value;
 
-// creating countdown object
-cooldown = new CountDown(hour, minute, second);
 
-cooldown.store();
-console.log
-// display countdown time on main page
 
 
 

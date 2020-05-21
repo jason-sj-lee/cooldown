@@ -10,16 +10,30 @@
     <body>
         <h1>Cool Down</h1>
         <div id="countdown">
-            <p id="countdown-number"></p>
-            <svg>
-              <circle r="90" cx="100" cy="100"></circle>
-            </svg>
+            <div class="setting-time">
+                <div class="time">
+                    <p>hr</p>
+                    <input type="number" id="hour" min="0" max="24">
+                </div>
+                <p>:</p>
+                <div class="time">
+                    <p>min</p>
+                    <input type="number" id="minute" value="25" min="0" max="60">
+                </div>
+                <p>:</p>
+                <div class="time">
+                    <p>s</p>
+                    <input type="number" id="second" value="00" min="0" max="60">
+                </div>
+            </div>
+            <br>
+            <button id="mybtn" value="off"></button>
+            <p id="demo"></p>
         </div>
         
         <div class="navbar">
             <a href="index.html" class="active">main</a>
             <a href="list.html">list</a>
-            <a href="settings.html">settings</a>
         </div> 
         <script src="index.js"></script>
     </body>

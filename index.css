@@ -5,39 +5,27 @@
     height: 200px;
     width: 200px;
     text-align: center;
+    background-color: aqua;
   }
   
-  #countdown-number {
-    color: #849DBC;
-    font-size: 40px;
-    display: inline-block;
-    line-height: 200px;
+  .setting-switch, .setting-time {
+    height: 100px;
+    /* position: absolute;
+    bottom: 40px; */
+    display: flex;
+    justify-content: space-evenly;
   }
   
-  svg {
-    position: absolute;
-    top: 0;
-    right: 0;
-    width: 200px;
-    height: 200px;
-    transform: rotateY(-180deg) rotateZ(-90deg);
+  .switch-child, .time {
+    margin: auto;
+    font-size: 20px;
+  
   }
   
-  svg circle {
-    stroke-dasharray: 565px;
-    stroke-dashoffset: 0px;
-    stroke-linecap: round;
-    stroke-width: 2px;
-    stroke: #2399ff;
-    fill: none;
-    animation: countdown 10s linear infinite forwards;
+  #hour, #minute, #second {
+    max-width: 50px;
+    height: 50px;
+    font-size: large;
+    text-align: center;
   }
-  
-  @keyframes countdown {
-    from {
-      stroke-dashoffset: 0px;
-    }
-    to {
-      stroke-dashoffset: 113px;
-    }
-  }
+
