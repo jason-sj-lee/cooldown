@@ -1,4 +1,43 @@
-// functionality for lists page
+/////////////////////////////////////
+// functionality for settings page //
+
+// class
+class CountDown{
+    constructor(hour, minute, second) {
+        this.hr = new String(hour);
+        this.min = new String(minute);
+        this.sec = new String(second);
+    }
+    store(){
+        localStorage.setItem('hour', this.hr);
+        localStorage.setItem('minute', this.min);
+        localStorage.setItem('second', this.sec);
+    }
+    display(){
+        return localStorage.getItem('hour') + ":" + localStorage.getItem('minute') + ":" + localStorage.getItem('second')
+    }
+}
+document.getElementById("countdown-number").innerHTML = localStorage.getItem('minute');
+// variable declaration
+var hour, minute, second;
+console.log(document.getElementById("hour"));
+// retrieving input time value 
+hour = document.getElementById("hour").value;
+minute = document.getElementById("minute").value;
+second = document.getElementById("second").value;
+
+// creating countdown object
+cooldown = new CountDown(hour, minute, second);
+
+cooldown.store();
+console.log
+// display countdown time on main page
+
+
+
+
+///////////////////////////////////
+// functionality for lists page //
 var blockButton = document.getElementById("blockButton").addEventListener("click", function() {handlers.addUrl()});
 
 if (localStorage.getItem("urls") === "null") {
