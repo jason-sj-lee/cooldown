@@ -42,6 +42,7 @@ var urlList = {
             this.urls.push(urlText);
             localStorage.setItem("urls", JSON.stringify(this.urls));
             localStorage.setItem("urlsFormatted", JSON.stringify(format.formatToUrl(this.urls)));
+            chrome.runtime.reload()
         //}
         // else {
         //     console.log(verification.isUrl(urlText));    
@@ -53,6 +54,7 @@ var urlList = {
         this.urls.splice(position, 1);
         localStorage.setItem("urls", JSON.stringify(this.urls));
         localStorage.setItem("urlsFormatted", JSON.stringify(format.formatToUrl(this.urls)));
+        chrome.runtime.reload()
     }
 };
 

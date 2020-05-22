@@ -1,4 +1,3 @@
-
 chrome.webRequest.onBeforeRequest.addListener(
     function(info) {
       console.log("Blocking: " + info.url);
@@ -9,4 +8,5 @@ chrome.webRequest.onBeforeRequest.addListener(
       urls: JSON.parse(localStorage.getItem("urlsFormatted"))
     },
     // extraInfoSpec
-    ["blocking"]);
+    ["blocking"]
+);
