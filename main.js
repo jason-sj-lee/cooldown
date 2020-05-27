@@ -1,64 +1,88 @@
-// /////////////////////////////////////
-// // functionality for index page //
-var hour, minute, second, btn;
+///////////////////////////////////
+// functionality for index page //
 
-window.onload = toggle;
+// assigning global variable to HTML elements
 
-// each of the time input field
-hour = document.getElementById("hour");
-minute = document.getElementById("minute");
-second = document.getElementById("second");
+const btn = document.getElementById("mybtn");
+const hour = document.getElementById("hour");
+const minute = document.getElementById("minute");
+const second = document.getElementById("second");
 
-// blur: when out of focus
-hour.addEventListener("blur", storeTime);
-minute.addEventListener("blur", storeTime);
-second.addEventListener("blur", storeTime);
 
-displayTime();
+// run toggle() on page load
+window.addEventListener("load", toggle());
 
-// button toggle
 function toggle() {
-    var btn = document.getElementById("mybtn");
     if (btn.value === "on") {
         btn.innerHTML = "stop";
         btn.value = "off";
+        start();
         btn.addEventListener("click", toggle);
-        addReadOnly();
     }
     else {
         btn.innerHTML = "start";
         btn.value = "on";
+        stop();
         btn.addEventListener("click", toggle);
-        removeReadOnly();
     }
 }
 
-// display selected time from localStorage
-function displayTime() {
-    hour.value = localStorage.getItem('hr');
-    minute.value = localStorage.getItem('min');
-    second.value = localStorage.getItem('sec');
+// start function
+function start() {
+    addReadOnly();
+    storeTime();
+
+    hr = localStorage.getItem('hr');
+    min = localStorage.getItem('min');
+    sec = localStorage.getItem('sec');
+
+    var d1 = new Date();
+    console.log(d1);
+    d1.setHours(d1.getHours() + parseInt(hr));
+    d1.setMinutes(d1.getMinutes() + parseInt(min));
+    d1.setSeconds(d1.getSeconds() + parseInt(sec));
+    console.log(d1);
+    var cdDate = d1.getTime();
+
+    setInterval(function () {
+        var now = new Date().getTime();
+        console.log(now);
+        // Find the distance between now and the count down date
+        var distance = cdDate - now;
+
+        // Time calculations for days, hours, minutes and seconds
+        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+        // Output the result in an element with id="demo"
+        document.getElementById("demo").innerHTML = hours + "h "
+        + minutes + "m " + seconds + "s ";
+    }, 1000);
 }
 
-// store selected time in localStorage
-function storeTime() {
-    // dont know why this is there 
-    localStorage.removeItem('hour');
-    localStorage.removeItem('minute');
-    localStorage.removeItem('second');
-
-    // storing time
-    localStorage.setItem('hr', hour.value);
-    localStorage.setItem('min', minute.value);
-    localStorage.setItem('sec', second.value);
-}
-
-// read-only functionality for time input
 function addReadOnly() {
     // apply read-only for time input
     hour.readOnly = true;
     minute.readOnly = true;
     second.readOnly = true;
+}
+
+function storeTime() {
+    // remove stored values
+    localStorage.removeItem('hr');
+    localStorage.removeItem('min');
+    localStorage.removeItem('sec');
+
+    // store new values
+    localStorage.setItem('hr', hour.value);
+    localStorage.setItem('min', minute.value);
+    localStorage.setItem('sec', second.value);
+}
+
+// stop function
+function stop() {
+    removeReadOnly();
 }
 
 function removeReadOnly() {
@@ -67,4 +91,3 @@ function removeReadOnly() {
     minute.readOnly = false;
     second.readOnly = false;
 }
-

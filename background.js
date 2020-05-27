@@ -1,3 +1,4 @@
+
 var urlsArray = JSON.parse(localStorage.getItem("urlsFormatted"));
 
 for (var i = 0; i < urlsArray.length; i++){
@@ -6,3 +7,4 @@ for (var i = 0; i < urlsArray.length; i++){
         {urls: [urlsArray[i]]},
         ["blocking"]);
 }
+
