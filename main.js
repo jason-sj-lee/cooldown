@@ -1,6 +1,9 @@
 ///////////////////////////////////
 // functionality for index page //
 
+
+chrome.storage.local.set({"running": "false"})
+
 // assigning global variable to HTML elements
 
 const btn = document.getElementById("mybtn");
@@ -29,6 +32,9 @@ function toggle() {
 
 // start function
 function start() {
+    // CHANGES HERE
+    chrome.storage.local.set({"running": "true"})
+
     addReadOnly();
     storeTime();
 
@@ -83,6 +89,9 @@ function storeTime() {
 // stop function
 function stop() {
     removeReadOnly();
+    
+    // CHANGES HERE
+    chrome.storage.local.set({"running": "false"})
 }
 
 function removeReadOnly() {

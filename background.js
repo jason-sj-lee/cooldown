@@ -14,3 +14,18 @@ function run() {
 function stop() {
         chrome.webRequest.onBeforeRequest.removeListener( block );
 }
+
+chrome.storage.onChanged.addListener(function runOrStop(changes, area) {
+    var changedItems = Object.keys(changes);
+    
+    for (let item of changedItems) {
+        if (item === "running") {
+            if (changes[item].newValue === "true"){
+                run();
+            }
+            else {
+                stop();
+            }
+        }
+    }
+})
