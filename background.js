@@ -1,10 +1,16 @@
+function block(details) { return {cancel: true}; }
 
-var urlsArray = JSON.parse(localStorage.getItem("urlsFormatted"));
+function run() {
+    var urlsArray = JSON.parse(localStorage.getItem("urlsFormatted"));
 
-for (var i = 0; i < urlsArray.length; i++){
-    chrome.webRequest.onBeforeRequest.addListener(
-        function(details) { return {cancel: true}; },
-        {urls: [urlsArray[i]]},
-        ["blocking"]);
+    for (var i = 0; i < urlsArray.length; i++){
+        chrome.webRequest.onBeforeRequest.addListener(
+            block,
+            {urls: [urlsArray[i]]},
+            ["blocking"]);
+    }    
 }
 
+function stop() {
+        chrome.webRequest.onBeforeRequest.removeListener( block );
+}
