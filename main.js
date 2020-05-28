@@ -96,6 +96,11 @@ function countDown(state) {
             // Output the result in an element with id="demo"
             document.getElementById("demo").innerHTML = hours + "h "
                 + minutes + "m " + seconds + "s ";
+            
+            if (distance < 0 ) {
+                localStorage.setItem("status", "off");
+                toggle();
+            }
         }, 1000);
     }
     else if (state === false) {
