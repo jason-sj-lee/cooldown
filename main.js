@@ -1,30 +1,60 @@
 ///////////////////////////////////
 // functionality for index page //
 
-
-chrome.storage.local.set({"running": "false"})
-
 // assigning global variable to HTML elements
 
 const btn = document.getElementById("mybtn");
 const hour = document.getElementById("hour");
 const minute = document.getElementById("minute");
 const second = document.getElementById("second");
+var cd;
+
 
 
 // run toggle() on page load
-window.addEventListener("load", toggle());
+window.addEventListener("load", setState());
+
+function setState() {
+    chrome.storage.local.get(['running'], function (result) {
+        if (result.running === "true") {
+            countDown(true);
+            localStorage.setItem("status", "off");
+            btn.innerHTML = "stop";
+            hour.value = localStorage.getItem('hr');
+            minute.value = localStorage.getItem('min');
+            second.value = localStorage.getItem('sec');
+            btn.addEventListener("click", toggle);
+        }
+        else if (result.running === "false") {
+            localStorage.setItem("status", "on");
+            btn.innerHTML = "start";
+            btn.addEventListener("click", toggle);
+
+        }
+        else {
+            btn.innerHTML = "start";
+            chrome.storage.local.set({ "running": "false" });
+            localStorage.setItem("status", "on");
+            btn.innerHTML = "start";
+            btn.addEventListener("click", toggle);
+        }
+    });
+}
 
 function toggle() {
-    if (btn.value === "on") {
+    var status = localStorage.getItem('status');
+    console.log("im here")
+    if (status === "on") {
+        chrome.storage.local.set({ "running": "true" });
+        localStorage.setItem("status", "off");
         btn.innerHTML = "stop";
-        btn.value = "off";
         start();
         btn.addEventListener("click", toggle);
     }
-    else {
+    else if (status === "off") {
+        chrome.storage.local.set({ "running": "false" });
+        localStorage.setItem("status", "on");
         btn.innerHTML = "start";
-        btn.value = "on";
         stop();
         btn.addEventListener("click", toggle);
     }
@@ -32,12 +62,9 @@ function toggle() {
 
 // start function
 function start() {
-    // CHANGES HERE
-    chrome.storage.local.set({"running": "true"})
-
     addReadOnly();
     storeTime();
-
+    countDown(true);
     hr = localStorage.getItem('hr');
     min = localStorage.getItem('min');
     sec = localStorage.getItem('sec');
@@ -48,23 +75,33 @@ function start() {
     d1.setMinutes(d1.getMinutes() + parseInt(min));
     d1.setSeconds(d1.getSeconds() + parseInt(sec));
     console.log(d1);
-    var cdDate = d1.getTime();
+    localStorage.setItem("cdDate", d1.getTime());
 
-    setInterval(function () {
-        var now = new Date().getTime();
-        console.log(now);
-        // Find the distance between now and the count down date
-        var distance = cdDate - now;
+    countDown();
+}
 
-        // Time calculations for days, hours, minutes and seconds
-        var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+function countDown(state) {
+    if (state === true) {
+        cd = setInterval(function () {
+            cdDate = localStorage.getItem('cdDate')
+            var now = new Date().getTime();
+            // Find the distance between now and the count down date
+            var distance = cdDate - now;
+    
+            // Time calculations for days, hours, minutes and seconds
+            var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+            // Output the result in an element with id="demo"
+            document.getElementById("demo").innerHTML = hours + "h "
+                + minutes + "m " + seconds + "s ";
+        }, 1000);
+    }
+    else if (state === false) {
+        clearInterval(cd);
+    }
 
-        // Output the result in an element with id="demo"
-        document.getElementById("demo").innerHTML = hours + "h "
-        + minutes + "m " + seconds + "s ";
-    }, 1000);
 }
 
 function addReadOnly() {
@@ -88,10 +125,10 @@ function storeTime() {
 
 // stop function
 function stop() {
+    countDown(false);
+    document.getElementById("demo").innerHTML = "";
     removeReadOnly();
-    
-    // CHANGES HERE
-    chrome.storage.local.set({"running": "false"})
+
 }
 
 function removeReadOnly() {
